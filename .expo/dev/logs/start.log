@@ -1,0 +1,15 @@
+{"_e":"root:init","_t":1781347041837,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781347041837,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781347041840,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1781347042094,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1781347042439,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1781347046642,"atlas":false,"workers":14,"host":"::","port":8081}
+{"_e":"env:mode","_t":1781347061540,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"metro:client_log","_t":1781347406158,"level":"error","data":["Project is incompatible with this version of Expo Go\n\nThe project you requested requires a newer version of Expo Go.\n\nHow to fix this error:\n\nDownload the latest version of Expo Go from the App Store."]}
+{"_e":"root:init","_t":1781347525700,"format":"v0-jsonl","version":"56.1.15"}
+{"_e":"env:mode","_t":1781347525701,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1781347525703,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1781347525935,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1781347526252,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1781347530283,"atlas":false,"workers":14,"host":"::","port":8081}
+{"_e":"metro:client_log","_t":1781347536557,"level":"error","data":["Project is incompatible with this version of Expo Go\n\nThe project you requested requires a newer version of Expo Go.\n\nHow to fix this error:\n\nDownload the latest version of Expo Go from the App Store."]}

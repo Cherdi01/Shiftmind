@@ -1,0 +1,17 @@
+{
+  "cli": {
+    "version": ">= 10.0.0"
+  },
+  "build": {
+    "production": {
+      "ios": {
+        "distribution": "store"
+      }
+    },
+    "preview": {
+      "ios": {
+        "distribution": "internal"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "shiftmind",
+  "dependencies": {
+    "expo": "^56.0.11"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.14",
+    "typescript": "~6.0.3"
+  }
+}

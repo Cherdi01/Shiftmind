@@ -1,0 +1,20 @@
+{
+  "extra": {
+    "eas": {
+      "projectId": "e7cb2e26-e9fb-44ed-be41-084cc3684965"
+    }
+  },
+  "expo": {
+    "ios": {
+      "bundleIdentifier": "com.cherdi.shiftmind",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e7cb2e26-e9fb-44ed-be41-084cc3684965"
+      }
+    }
+  }
+}
