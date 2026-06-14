@@ -1,18 +1,28 @@
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { WasteType } from "../types";
-import { styles } from "./styles";
+
+const COLOR_MAP: Record<WasteType, string> = {
+  GREEN: "#22c55e",
+  BIO:   "#a16207",  // dunkleres Braun – besser sichtbar
+  BLACK: "#94a3b8",  // hellgrau statt schwarz – im Darkmode erkennbar
+  GLASS: "#3b82f6",
+};
+
+const ICON_MAP: Record<WasteType, string> = {
+  GREEN: "trash-can",
+  BIO:   "trash-can",
+  BLACK: "trash-can",
+  GLASS: "package-variant",
+};
 
 export function WasteIcon({ type, size = 14 }: { type: WasteType; size?: number }) {
-  if (type === "GLASS") {
-    return <MaterialCommunityIcons name="package-variant" size={size} color="#3b82f6" style={styles.wasteIcon} />;
-  }
-
-  const colorMap: Record<Exclude<WasteType, "GLASS">, string> = {
-    GREEN: "#22c55e",
-    BIO: "#8b5a2b",
-    BLACK: "#111827",
-  };
-
-  return <MaterialCommunityIcons name="trash-can" size={size} color={colorMap[type]} style={styles.wasteIcon} />;
+  return (
+    <MaterialCommunityIcons
+      name={ICON_MAP[type] as any}
+      size={size}
+      color={COLOR_MAP[type]}
+      style={{ marginHorizontal: 1 }}
+    />
+  );
 }

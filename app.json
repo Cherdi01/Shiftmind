@@ -6,15 +6,19 @@
     "orientation": "portrait",
     "ios": {
       "bundleIdentifier": "com.cherdi.shiftmind",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "usesAppleSignIn": true
     },
     "extra": {
       "eas": {
         "projectId": "e7cb2e26-e9fb-44ed-be41-084cc3684965"
       }
-    }
+    },
+    "plugins": [
+      "expo-apple-authentication"
+    ]
   }
 }
