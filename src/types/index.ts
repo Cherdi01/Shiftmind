@@ -1,4 +1,4 @@
-export type Tab = "home" | "tasks" | "month" | "more";
+export type Tab = "home" | "tasks" | "month" | "more" | "ai";
 
 export type ShiftCategory =
   | "early" | "late" | "night" | "day" | "free" | "training" | "custom";

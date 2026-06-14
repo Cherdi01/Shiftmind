@@ -2,6 +2,8 @@ import "react-native-url-polyfill/auto";
 import React, { useEffect, useMemo, useState } from "react";
 import { Alert, SafeAreaView, StatusBar, Text, View } from "react-native";
 import { AddressModal } from "./src/components/AddressModal";
+import { AIImportModal } from "./src/components/AIImportModal";
+import { AIRoutineModal } from "./src/components/AIRoutineModal";
 import { DayDetailModal } from "./src/components/DayDetailModal";
 import { EventModal } from "./src/components/EventModal";
 import { ImportModal } from "./src/components/ImportModal";
@@ -10,6 +12,7 @@ import { NewTemplateModal } from "./src/components/NewTemplateModal";
 import { ShiftSelectModal } from "./src/components/ShiftSelectModal";
 import { TabButton } from "./src/components/TabButton";
 import { WasteScheduleModal } from "./src/components/WasteScheduleModal";
+import { AIChatScreen } from "./src/screens/AIChatScreen";
 import { OnboardingScreen } from "./src/screens/onboarding/OnboardingScreen";
 import { AuthScreen } from "./src/screens/AuthScreen";
 import { useAuth } from "./src/hooks/useAuth";
@@ -31,7 +34,7 @@ import {
 import { getStateCode } from "./src/services/holidayService";
 import { getTheme } from "./src/theme";
 import {
-  AppTheme, CalendarEvent, FeatureFlags,
+  AppTheme, AssignedShift, CalendarEvent, FeatureFlags,
   ShiftCategory, ShiftTemplate, Tab, UserProfile,
 } from "./src/types";
 
@@ -53,7 +56,7 @@ export default function App() {
   const stateCode = getStateCode(settings.address);
 
   // ── Tab State ─────────────────────────────────────────────────────────────
-  const [tab, setTab] = useState<Tab>("home");
+  const [tab, setTab] = useState<Tab | "ai">("home");
   const [tabInitialized, setTabInitialized] = useState(false);
   const [skippedAuth, setSkippedAuth] = useState(false);
   useEffect(() => {
@@ -96,6 +99,8 @@ export default function App() {
   const [showNewRoutineModal, setShowNewRoutineModal] = useState(false);
   const [showEventModal, setShowEventModal] = useState(false);
   const [showAddressModal, setShowAddressModal] = useState(false);
+  const [showAIImportModal, setShowAIImportModal] = useState(false);
+  const [showAIRoutineModal, setShowAIRoutineModal] = useState(false);
   const [presetCode, setPresetCode] = useState<string | undefined>(undefined);
   const [editTemplate, setEditTemplate] = useState<ShiftTemplate | undefined>(undefined);
   const [editEvent, setEditEvent] = useState<CalendarEvent | undefined>(undefined);
@@ -170,6 +175,10 @@ export default function App() {
     addEvent(data);
     setShowEventModal(false);
     setEditEvent(undefined);
+  }
+
+  function handleAIImportConfirm(shifts: AssignedShift[]) {
+    shifts.forEach((s) => assignShift(s.day, s.code));
   }
 
   async function resetDemo() {
@@ -273,9 +282,16 @@ export default function App() {
               wasteMap={currentWasteMap} events={events} stateCode={stateCode}
               features={settings.features} t={t}
               onDayPress={(day) => { setSelectedDay(day); setShowDayModal(true); }}
-              onImportPress={() => setShowImportModal(true)}
+              onImportPress={() => setShowAIImportModal(true)}
               onNewTemplatePress={() => openNewTemplate()}
               onWastePress={() => setShowWasteModal(true)}
+            />
+          )}
+          {tab === "ai" && (
+            <AIChatScreen
+              t={t}
+              assigned={assigned}
+              userName={settings.profile?.name}
             />
           )}
           {tab === "more" && (
@@ -308,6 +324,7 @@ export default function App() {
             <TabButton label="Aufgaben" icon="checkbox-marked-circle-outline" active={tab === "tasks"} onPress={() => setTab("tasks")} badge={openTaskCount} />
           )}
           <TabButton label="Monat"    icon="calendar-month"                 active={tab === "month"}  onPress={() => setTab("month")} />
+          <TabButton label="KI"       icon="robot-outline"                  active={tab === "ai"}     onPress={() => setTab("ai")} />
           <TabButton label="Mehr"     icon="cog-outline"                    active={tab === "more"}   onPress={() => setTab("more")} />
         </View>
 
@@ -354,6 +371,21 @@ export default function App() {
           t={t} editEvent={editEvent}
           onSave={onSaveEvent}
           onClose={() => { setShowEventModal(false); setEditEvent(undefined); }}
+        />
+        <AIImportModal
+          visible={showAIImportModal}
+          t={t}
+          knownCodes={templates.map((t) => t.code)}
+          onConfirm={handleAIImportConfirm}
+          onClose={() => setShowAIImportModal(false)}
+        />
+        <AIRoutineModal
+          visible={showAIRoutineModal}
+          t={t}
+          templates={templates}
+          userName={settings.profile?.name}
+          onSave={(data) => { addRoutine(data); setShowAIRoutineModal(false); }}
+          onClose={() => setShowAIRoutineModal(false)}
         />
         <AddressModal
           visible={showAddressModal} current={settings.address} t={t}

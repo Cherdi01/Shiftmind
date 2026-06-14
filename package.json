@@ -10,6 +10,7 @@
     "expo-haptics": "~14.1.4",
     "react": "19.2.3",
     "react-native": "0.85.3",
+    "react-native-image-picker": "^7.1.2",
     "react-native-url-polyfill": "^2.0.0"
   },
   "devDependencies": {

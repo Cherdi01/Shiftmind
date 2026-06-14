@@ -6,9 +6,11 @@
     "orientation": "portrait",
     "ios": {
       "bundleIdentifier": "com.cherdi.shiftmind",
-      "buildNumber": "3",
+      "buildNumber": "4",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "ShiftMind nutzt die Kamera um deinen Dienstplan zu fotografieren und automatisch zu erkennen.",
+        "NSPhotoLibraryUsageDescription": "ShiftMind kann Fotos deines Dienstplans aus der Galerie lesen und automatisch erkennen."
       },
       "usesAppleSignIn": true
     },
