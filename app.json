@@ -1,12 +1,12 @@
 {
-  "extra": {
-    "eas": {
-      "projectId": "e7cb2e26-e9fb-44ed-be41-084cc3684965"
-    }
-  },
   "expo": {
+    "name": "ShiftMind",
+    "slug": "shiftmind",
+    "version": "0.1.0",
+    "orientation": "portrait",
     "ios": {
       "bundleIdentifier": "com.cherdi.shiftmind",
+      "buildNumber": "2",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
